@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v3
       
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,18 +29,5 @@ jobs:
         run: |
           python scraper_vagas.py
       
-      - name: 📁 Fazer upload de resultados
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: vagas-encontradas
-          path: vagas_encontradas.json
-          retention-days: 30
-      
-      - name: ✅ Status
-        if: success()
-        run: echo "Scraper executado com sucesso!"
-      
-      - name: ❌ Erro
-        if: failure()
-        run: echo "Erro ao executar scraper - verifique logs"
+      - name: ✅ Pronto!
+        run: echo "Scraper executado com sucesso!"  
